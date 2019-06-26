@@ -14,13 +14,13 @@ for a in range(0,10,2):
 
 print (range(0,10,2))
 
-# while True:
-#     try:
-#         i = float(input("请输入利润（万元）："))
-#         break
-#     except:
-#         print ("请输入数字")
-# print (a)
+while True:
+    try:
+        i = float(input("请输入利润（万元）："))
+        break
+    except:
+        print ("请输入数字")
+print (a)
 
 
 while True:
