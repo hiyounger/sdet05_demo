@@ -8,3 +8,4 @@ def chang_name(new_name):
 print name
 chang_name('小彤彤')
 print name
+
