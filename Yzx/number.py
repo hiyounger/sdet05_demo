@@ -12,9 +12,11 @@ while True:
         count+=1
         print ("恭喜你猜对了，一共猜测了%d次"%count)
         break
-    elif num1>number:
+    elif num1>number and num1<=100:
         count+=1
         print ("猜测大了")
+    elif  num1>100:
+        print ("请输入0到100的数字")
     else:
         count += 1
         print ("猜测小了")
