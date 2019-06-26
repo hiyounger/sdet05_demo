@@ -3,8 +3,11 @@ week=['1','2','3','4','5','6','7']
 for i in week:
     print (i),
 print
-for i in range(0 , 11 ,2):
-    print (i),
+for i in range(0 ,11 ,2):
+    if i==0:
+        pass
+    else:
+        print (i),
 print
 print (type(range(0,11,2)))
 print (range(0,23,2))
