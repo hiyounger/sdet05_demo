@@ -1,4 +1,5 @@
 #encoding: utf-8
+
 week=["星期一","星期二","星期三","星期四"]
 for day in week:
     print (day)
