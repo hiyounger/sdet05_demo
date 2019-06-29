@@ -55,6 +55,7 @@ class SalesClient():
                 print "-----------",newMember
             return newMember
 
+
         elif payTotal>=1000:
             for i in newMember:
                 if userTel==i["tel"]:

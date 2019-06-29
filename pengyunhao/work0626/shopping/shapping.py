@@ -31,6 +31,7 @@ def saling():
     #3.商品的结束清单
     payList,payTotal=SalesClient.payMenu(productList,userDiscount)
 
+
     #4.格式化输出
     outPut = SalesClient.formatOut(payList, payTotal)
     print outPut

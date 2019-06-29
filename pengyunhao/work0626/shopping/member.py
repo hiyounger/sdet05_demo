@@ -84,6 +84,7 @@ class MemberUtils():
             if memberTel[i][len(memberTel[0])-4:len(memberTel[0])]==userTel:
                 print newMember[i]
 
+
     @classmethod
     def AllMember(cls,allMember):
         member.append(allMember)
