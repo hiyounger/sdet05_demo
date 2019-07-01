@@ -24,3 +24,10 @@ class get_members():
                 get_all_member.append(member)
                 break
         return get_all_member
+
+    @classmethod
+    def add_member(cls,tel):
+        new_member={'tel':tel,'disc':1}
+        new_member['uid']=str(len(mysql.members)+1)
+        mysql.members.append(new_member)
+        return new_member

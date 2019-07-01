@@ -1,5 +1,5 @@
 # encoding:utf-8
-from flask import Flask
+from flask import Flask,request
 from tyj.super_market.model.members import get_members
 
 app = Flask('__main__')
@@ -34,7 +34,7 @@ def get_all_members(condition=None):
         return get_all_member
     else:
         tel = request.form['tel']
-        new_member = get_members.add_members(tel)
+        new_member = get_members.add_member(tel)
         return str(new_member)
 
 
