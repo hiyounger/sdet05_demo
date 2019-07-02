@@ -16,7 +16,7 @@ class MyTestCase(unittest.TestCase):
         act_result = Member.get_members_by_tel(target_tel)
         self.assertEqual(exp_result, act_result)
 
-    def test_case202_testGetMemberByTel4(self):
+    def test_case202_testGetMemberByTel(self):
         target_tel = "5671"
         exp_result = [{'id': '4', 'tel': "18812345671", 'discount': 0.8},{'id': '5', 'tel': "18811345671", 'discount': 0.8}]
         act_result = Member.get_members_by_tel(target_tel)
