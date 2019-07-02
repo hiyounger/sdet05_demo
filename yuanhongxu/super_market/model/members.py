@@ -83,15 +83,13 @@ class member():
                 return ret_dic
 
     @classmethod
-    def filter_member_by_score(cls,jifen):
-        member_list=[]
+    def filter_member_by_score(cls, jifen):
+        member_list = []
         for member in mysql.member:
-            if str(member["jifen"])>=jifen:
-                print member["jifen"]
-                print jifen
+            if str(member["jifen"]) >= jifen:
                 member_list.append(member)
-        ret_dic={
-            "count":len(member_list),
-            "member":member_list
+        ret_dic = {
+            "count": len(member_list),
+            "member": member_list
         }
         return ret_dic

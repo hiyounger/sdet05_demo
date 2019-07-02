@@ -80,14 +80,14 @@ def get_all_members(condition=None):
         ret_dic = {"return_code": 200, "msg": "什么也没做"}
         return jsonify(ret_dic)
 
+
 @app.route("/filter/jifen")
 def filter_member_by_jifen():
-    jifen=request.args["le"]
-    ret_dic=member.filter_member_by_score(jifen)
+    jifen = request.args["le"]
+    ret_dic = member.filter_member_by_score(jifen)
     ret_dic["return_code"] = 200
     ret_dic["msg"] = "Filter Member Successful"
     return jsonify(ret_dic)
-
 
 
 if __name__ == "__main__":
