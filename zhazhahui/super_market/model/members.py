@@ -50,6 +50,7 @@ class Member():
                     mysql.members[i][key]=new_user_info[key]
                     return mysql.members[i]
         return {}
+
     @classmethod
     def update_member_score(cls,uid,score):
         for i in range(len(mysql.members)):
@@ -65,5 +66,32 @@ class Member():
                     'score_change':score,
                 }
                 return ret_dic
+
+    @classmethod
+    def inactive_member(cls,uid):
+        for i in range(len(mysql.members)):
+            if mysql.members[i]['uid']==uid:
+                mysql.members[i]['active']='die'
+
+                ret_dic={
+                    'uid':mysql.members[i]['uid'],
+                    'tel':mysql.members[i]['tel'],
+                    'active':'die',
+                    'discount':'1'
+                }
+                return ret_dic
+
+    @classmethod
+    def filter_member_by_score(cls,score):
+        member_list=[]
+        for member in mysql.members:
+            if str(member['score'])>=score:
+                debug("Find user:uid=%s"% str(member['uid']))
+                member_list.append(member)
+            ret_dic={
+                'count':len(member_list),
+                'members':member_list
+            }
+            return ret_dic
 
 
