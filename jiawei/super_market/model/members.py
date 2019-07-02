@@ -28,7 +28,7 @@ class Member():
     def get_member_by_uid(cls, uid):
         member_list = []
         for member in mysql.members:
-            if member['tel'] == uid:
+            if member['uid'] == uid:
                 member_list.append(member)
                 break
 
