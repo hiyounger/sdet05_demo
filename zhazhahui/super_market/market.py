@@ -63,6 +63,13 @@ def get_all_members(condition=None):
                 member_list = Member.get_members_by_uid(uid)
                 member_list['return_code'] = 200
                 member_list['return_msg'] = 'Get Member by uid Success'
+        return jsonify(member_list)
+
+    elif request.method == "POST":
+        tel = request.form["tel"]
+        newmember = Member.add_member(tel)
+        return jsonify(newmember)
+
     elif request.method == 'PUT':
         uid = condition.split("_")[-1]
         tel = request.form['tel']
@@ -77,6 +84,7 @@ def get_all_members(condition=None):
             ret_dic['return_code'] = 200
             ret_dic['return_msg'] = 'Update user by user info success'
         return jsonify(ret_dic)
+
     elif request.method == "PATCH":
         uid = condition.split("_")[-1]
         score = request.form["score"]
@@ -84,6 +92,7 @@ def get_all_members(condition=None):
         ret_dic['return_code'] = 200
         ret_dic['return_msg'] = 'Update user score success'
         return jsonify(ret_dic)
+
     elif request.method=="DELETE":
         uid=condition.split("_")[-1]
         ret_dic=Member.incative_member(uid)
