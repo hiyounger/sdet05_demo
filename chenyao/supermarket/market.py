@@ -1,7 +1,6 @@
 # encoding:utf-8
 from flask import Flask, request, jsonify
 from chenyao.supermarket.model.member import Members
-
 app = Flask('__main__')
 @app.route('/')
 def say_hello():

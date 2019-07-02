@@ -1,6 +1,5 @@
 # encoding:utf-8
 from chenyao.supermarket.db import member
-
 class Members:
     @classmethod
     def show_members(self):
