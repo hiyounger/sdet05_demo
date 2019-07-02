@@ -32,7 +32,6 @@ class get_members():
             if member['id'] == uid:
                 get_all_member.append(member)
                 break
-
         get_member = {
             'count': len(get_all_member),
             'member': get_all_member
@@ -40,8 +39,8 @@ class get_members():
         return get_member
 
     @classmethod
-    def add_member(cls, tel):
-        new_member = {'tel': tel, 'disc': 1}
+    def add_member(cls, tel,score,active):
+        new_member = {'tel': tel, 'disc': 1,'score':score,'active':active}
         new_member['id'] = str(len(mysql.members) + 1)
         mysql.members.append(new_member)
         return new_member
@@ -78,7 +77,6 @@ class get_members():
         for i in range(len(mysql.members)):
             if mysql.members[i]['id'] == id:
                 mysql.members[i]['active'] = '0'
-
                 ret_dic = {
                     'id': mysql.members[i]['id'],
                     'tel': mysql.members[i]['tel'],
