@@ -39,8 +39,8 @@ class get_members():
         return get_member
 
     @classmethod
-    def add_member(cls, tel,score,active):
-        new_member = {'tel': tel, 'disc': 1,'score':score,'active':active}
+    def add_member(cls, tel, score, active):
+        new_member = {'tel': tel, 'disc': 1, 'score': score, 'active': active}
         new_member['id'] = str(len(mysql.members) + 1)
         mysql.members.append(new_member)
         return new_member
@@ -84,15 +84,15 @@ class get_members():
                     'dics': '1'
                 }
                 return ret_dic
+
     @classmethod
-    def filter_member_by_score(cls,score):
+    def filter_member_by_score(cls, score):
         member_list = []
         for member in mysql.members:
-            if str(member['score'])>=score:
+            if str(member['score']) >= score:
                 member_list.append(member)
-
-                ret_dic = {
-                    'count':len(member_list),
-                    'members':member_list
-                }
-                return ret_dic
+        ret_dic = {
+            'count': len(member_list),
+            'members': member_list
+        }
+        return ret_dic

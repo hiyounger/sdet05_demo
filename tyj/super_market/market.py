@@ -6,7 +6,7 @@ app = Flask('__main__')
 
 
 @app.route('/members', methods=['GET', 'POST'])
-@app.route('/members/<condition>', methods=['GET', 'PUT', 'PATCH'])
+@app.route('/members/<condition>', methods=['GET', 'PUT', 'PATCH','DELETE'])
 def get_all_members(condition=None):
     if request.method == 'GET':
         if condition == None:
