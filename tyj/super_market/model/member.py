@@ -1,9 +1,7 @@
 # -*- encoding:utf-8 -*-
 
 from flask_sqlalchemy import SQLAlchemy
-
 db = SQLAlchemy()
-
 
 class Member(db.Model):
     uid = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -18,13 +16,11 @@ class Member(db.Model):
     def add_member_by_tel(cls, tel):
         mem = Member()
         mem.tel = tel
-        mem.score = 0
-        mem.active = 1
         db.session.add(mem)
         db.session.commit()
-        ret_dic = Member.search_by_tel(tel)['members'][0]
-        return ret_dic
 
+        ret_dic = cls.search_by_tel(tel)['members'][0]
+        return ret_dic
 
     @classmethod  # 根据手机号查询会员信息
     def search_by_tel(cls, tel):

@@ -1,8 +1,8 @@
 # -*- encoding:utf-8 -*-
 from flask import Flask, jsonify, request
-from tyj.super_market.model.member import db, Member
-app = Flask(__name__)
+from tyj.super_market.model.member import Member, db
 
+app = Flask(__name__)
 
 # 配置数据库连接
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -26,15 +26,16 @@ def init_db():
 
 
 @app.route('/member', methods=['POST'])
-def member_actions():
+def member_actions(condition=None):
     # 1.处理创建
     if request.method == 'POST':
         tel = request.form['tel']
-        mem_info = Member.add_member(tel)
-        ret_dic = {"return_code": 200, "return_msg": "add member success",
-                   "member": mem_info
+        mem_info = Member.add_member_by_tel(tel)
+        ret_dic = {
+                "return_code": 200, "return_msg": "add member success",
+                "member": mem_info
                    }
-        return ret_dic
+        return jsonify(ret_dic)
 
 
 if __name__ == '__main__':
