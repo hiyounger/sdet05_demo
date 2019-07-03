@@ -1,12 +1,12 @@
 # encoding:utf-8
 from flask import Flask, request, jsonify
-from tyj.super_market.model.members import get_members
+from tyj.super_market.model.members_demo import get_members
 
 app = Flask('__main__')
 
 
 @app.route('/members', methods=['GET', 'POST'])
-@app.route('/members/<condition>', methods=['GET', 'PUT', 'PATCH'])
+@app.route('/members/<condition>', methods=['GET', 'PUT', 'PATCH','DELETE'])
 def get_all_members(condition=None):
     if request.method == 'GET':
         if condition == None:

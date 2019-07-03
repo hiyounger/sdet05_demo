@@ -1,5 +1,5 @@
 import unittest
-from tyj.super_market.model.members import get_members
+from tyj.super_market.model.members_demo import get_members
 
 
 class MyTestCase(unittest.TestCase):
