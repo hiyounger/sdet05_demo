@@ -1,6 +1,6 @@
 # encoding:utf-8
 from flask import Flask, request, jsonify
-from tyj.super_market.model.members import get_members
+from tyj.super_market.model.members_demo import get_members
 
 app = Flask('__main__')
 
