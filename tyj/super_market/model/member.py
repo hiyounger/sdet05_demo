@@ -10,14 +10,16 @@ class Member(db.Model):
     tel = db.Column(db.String(11), unique=True, nullable=False)
     discount = db.Column(db.FLOAT, nullable=False, default=1)
     score = db.Column(db.Integer, nullable=False, default=0)
-    active = db.Column(db.Boolean, nullable=False, default=True)
+    active = db.Column(db.Integer, nullable=False, default=1)
 
     __tablename__ = 'members'
 
     @classmethod  # 添加会员
-    def add_member(cls, tel):
+    def add_member_by_tel(cls, tel):
         mem = Member()
         mem.tel = tel
+        mem.score = 0
+        mem.active = 1
         db.session.add(mem)
         db.session.commit()
         ret_dic = Member.search_by_tel(tel)['members'][0]
