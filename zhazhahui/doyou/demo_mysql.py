@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 # 实例化一个flask_sqlslchemy对象，用于操作数据库
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:root@192.168.8.52:3306/jiawei_list"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:12345@192.168.8.71:3306/vip_market"
 db = SQLAlchemy(app)
 
 
