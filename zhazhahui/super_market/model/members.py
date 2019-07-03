@@ -1,5 +1,6 @@
 # encoding:utf-8
 from zhazhahui.super_market.db import mysql
+from zhazhahui.super_market.tools.logger import debug
 
 
 class Member():
@@ -12,11 +13,14 @@ class Member():
 
     @classmethod
     def get_members_by_tel(cls, tel):
+
+        # TODO 对输入的手机号进行判断，必须为十一位数，且只能为数字
         member_list = []
         for member in mysql.members:
             if member['tel'] == tel:
                 member_list.append(member)
                 break
+            #  TODO 对输入的后四位数进行判断，必须为后四位，且是数字
             elif member['tel'].endswith(tel):
                 member_list.append(member)
         target_members = {

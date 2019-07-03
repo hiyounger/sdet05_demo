@@ -34,25 +34,25 @@ def json_test():
 
 @app.route('/filter/score')
 def filter_member_by_score():
-    score=request.args['le']
-    debug('Get request args score='+str(score))
-    ret_dic=Member.filter_member_by_score(score)
-    ret_dic['return_code']=200
-    ret_dic['return_msg']='Fliter uesr success'
+    score = request.args['le']
+    debug('Get request args score=' + str(score))
+    ret_dic = Member.filter_member_by_score(score)
+    ret_dic['return_code'] = 200
+    ret_dic['return_msg'] = 'Fliter uesr success'
     return jsonify(ret_dic)
 
 
 @app.route("/member", methods=['GET', 'POST'])
-@app.route("/member/<condition>", methods=['GET', 'PUT', 'PATCH','DELETE'])
+@app.route("/member/<condition>", methods=['GET', 'PUT', 'PATCH', 'DELETE'])
 def get_all_members(condition=None):
     if request.method == 'GET':
         if condition == None:
             member_list = Member.get_all_members()
-            member_list['return_code']=200
+            member_list['return_code'] = 200
             member_list['return_msg'] = 'Get Member list Success'
 
         else:
-            print("condition: %s" % condition)
+            # print("condition: %s" % condition)
             if condition.startswith("tel_"):
                 tel = condition.split("_")[-1]
                 member_list = Member.get_members_by_tel(tel)
@@ -93,16 +93,18 @@ def get_all_members(condition=None):
         ret_dic['return_msg'] = 'Update user score success'
         return jsonify(ret_dic)
 
-    elif request.method=="DELETE":
-        uid=condition.split("_")[-1]
-        ret_dic=Member.incative_member(uid)
-        ret_dic['return_code']=200
-        ret_dic['return_msg']='Inactive user success'
+    elif request.method == "DELETE":
+        uid = condition.split("_")[-1]
+        ret_dic = Member.incative_member(uid)
+        ret_dic['return_code'] = 200
+        ret_dic['return_msg'] = 'Inactive user success'
         return jsonify(ret_dic)
     else:
         ret_dic = {'return_code': '200', 'return_msg': '什么也不做'}
 
         return jsonify(ret_dic)
+
+
 if __name__ == '__main__':
     app.run()
 
