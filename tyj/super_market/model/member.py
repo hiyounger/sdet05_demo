@@ -16,13 +16,14 @@ class Member(db.Model):
 
     @classmethod  # 添加会员
     def add_member_by_tel(cls, tel):
-        mem = Member()
-        mem.tel = tel
-        db.session.add(mem)
+        member = Member()
+        member.tel = tel
+        db.session.add(member)
         db.session.commit()
-
         ret_dic = cls.search_by_tel(tel)['members'][0]
         return ret_dic
+
+
 
     @classmethod  # 根据手机号查询会员信息
     def search_by_tel(cls, tel):
