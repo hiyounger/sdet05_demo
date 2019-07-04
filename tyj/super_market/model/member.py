@@ -1,7 +1,9 @@
 # -*- encoding:utf-8 -*-
 
 from flask_sqlalchemy import SQLAlchemy
+
 db = SQLAlchemy()
+
 
 class Member(db.Model):
     uid = db.Column(db.Integer, primary_key=True, autoincrement=True)
