@@ -1,11 +1,12 @@
 # encoding:utf-8
 from flask import Flask, jsonify, request
-from model.member import db, Member
+from tyj.super_market.model.member import Member, db
+
 
 app = Flask(__name__)
 # 配置数据库连接
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:root@127.0.0.1:3306/supermarket"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:111111@127.0.0.1:3306/supermarket"
 db.init_app(app)
 
 
@@ -22,9 +23,10 @@ def init_db():
         'return_msg': 'Init db success'
     }
     return jsonify(ret_dic)
-# 根据手机号码注册用户
+
+
+# 根据手机号添加会员  ---童一鉴
 @app.route('/member', methods=['POST'])
-@app.route('/member/<condition>', methods=['GET', 'PUT','PATCH'])
 def member_actions(condition=None):
     # 1.处理创建
     if request.method == 'GET':
@@ -33,14 +35,109 @@ def member_actions(condition=None):
             member_list['return_code'] = 200
             member_list['return_msg'] = '获取用户成功'
     elif request.method == 'POST':
-        tel = request.form['tel']
-        mem_info = Member.add_member_by_tel(tel)
-        ret_dic = {
-            "return_code": 200, "return_msg": "add member success",
-            "member": mem_info
-        }
+        if len(request.form['tel']) == 11:
+            tel = request.form['tel']
+            mem_info = Member.add_member_by_tel(tel)
+            ret_dic = {
+                "return_code": 200, "return_msg": "add member success",
+                "member": mem_info
+            }
+            return jsonify(ret_dic)
+        else:
+            ret_dic = {
+                "return_code": 508, "return_msg": "add member failed, exists",
+            }
+            return jsonify(ret_dic)
+
+
+# 根据手机号码查找会员列表  ---liu
+@app.route('/member/<condition>' , methods=['GET'])
+def get_members_by_tel(condition=None):
+    if request.method == 'GET':
+        if condition.startswith('tel_'):
+            tel = condition.split('_')[-1]
+            ret_dic = Member.search_by_tel(tel)
+            ret_dic['return_code'] = 200
+            ret_dic['return_msg'] = 'Get Member by tel success'
+            return jsonify(ret_dic)
+        else:
+            uid = int(condition.split('_')[-1])
+            ret_dic = Member.serch_member_by_uid(uid)
+            if len(ret_dic) == 0:
+                ret_dic['return_code'] = 400
+                ret_dic['return_msg'] = 'Get Member by uid faild'
+            else:
+                ret_dic['return_code'] = 200
+                ret_dic['return_msg'] = 'Get Member by uid success'
+            return jsonify(ret_dic)
+
+# 查找大于给定积分的用户--闫振兴
+@app.route('/filter/score')
+def get_members_byScore():
+    score = request.args['le']
+    ret_dict = Member.get_member_byScore(score)
+    ret_dict['return_code'] = 200
+    ret_dict['return_msg'] = "Filter user success"
+    print (ret_dict)
+    return jsonify(ret_dict)
+
+
+
+#根据用户金额更改用户积分  杨俊
+@app.route('/member/<condition>' , methods=['PATCH'])
+def surpermark_member(condition=None):
+    if condition != None:
+        if request.method == 'PATCH':
+            uid = int(condition.split("_")[-1])
+            score = int(request.form['score'])
+            ret_dic = Member.update_member_score(uid, score)
+            ret_dic['return_code'] = 200
+            ret_dic['return_msg'] = 'update score success'
+            return jsonify(ret_dic)
+
+
+@app.route('/member', methods=['PUT'])
+def update_members_info():
+    mem_tel=request.form['tel']
+    mem_discount=request.form['discount']
+    mem_score=request.form['score']
+    mem_active=request.form['active']
+
+    target_members=Member.query.filter(Member.uid == uid)[0]
+    target_members.tel=mem_tel
+    target_members.discount=mem_discount
+    target_members.score=mem_score
+    target_members.active = mem_active
+    db.session.commit()
+
+    ret_dic = {
+        'return_code': '200',
+        'return_msg': 'Update members success',
+        'tel': mem_tel,
+        'discount': mem_discount,
+        'score':mem_score,
+        'active': mem_active
+    }
+    return jsonify(ret_dic)
+
+
+# 根据UID注销
+@app.route('/member/<condition>', methods=['DELETE'])
+def delete_member(condition=None):
+    if request.method == 'DELETE':
+        uid = int(condition.split("_")[-1])
+        ret_dic = Member.delete_member(uid)
+        if len(ret_dic) == 0:
+            ret_dic['return_code'] = 400
+            ret_dic['return_msg'] = 'Delete user failed'
+        else:
+            ret_dic['return_code'] = 200
+            ret_dic['return_msg'] = 'Delete user success'
+        print(ret_dic)
         return jsonify(ret_dic)
 
 
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run()
