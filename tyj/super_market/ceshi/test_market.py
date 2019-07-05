@@ -36,7 +36,7 @@ def member_actions(condition=None):
             member_list['return_msg'] = '获取用户成功'
     elif request.method == 'POST':
         if len(request.form['tel']) == 11:
-            result= request.form['tel'].isdigit()
+            result = request.form['tel'].isdigit()
             if result == True:
                 tel = request.form['tel']
                 mem_info = Member.add_member_by_tel(tel)
