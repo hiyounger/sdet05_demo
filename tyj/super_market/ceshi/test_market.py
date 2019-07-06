@@ -24,6 +24,8 @@ def init_db():
     return jsonify(ret_dic)
 
 
+#
+# 0706
 @app.route('/member', methods=['POST'])
 def member_actions():
     tel = request.form['tel']
@@ -37,13 +39,7 @@ def member_actions():
                 "member": mem_info
             }
             return jsonify(ret_dic)
-        elif tel in Member.search_by_tel:  # 如果手机号已存在未实现   and ret_dic_act == 1 :
-            ret_dic = {
-                "return_code": 508, "return_msg": "add member failed, exists",
-            }
-            return jsonify(ret_dic)
-        else:  # and ret_dic_act == 1 :
-            # tel = request.form['tel']
+        else:
             ret_dic = {
                 "return_code": 508, "return_msg": "add member failed, exists",
             }
@@ -54,7 +50,7 @@ def member_actions():
         }
         return jsonify(ret_dic)
 
-
+#
 # # 根据手机号添加会员  ---童一鉴
 # @app.route('/member', methods=['POST'])
 # def member_actions(condition=None):
