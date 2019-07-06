@@ -22,6 +22,50 @@ def init_db():
         'return_msg': 'Init db success'
     }
     return jsonify(ret_dic)
+#
+# @app.route('/member', methods=['POST'])
+# def member_actions():
+#    # 添加新用户到数据库，根据手机号码
+#
+#         tel = request.form['tel']
+#         member1 = Member.query.filter(Member.tel == tel).first()
+#         if member1!=None:
+#             ret_dic = {
+#                 "return_code": "400",
+#                 "return_msg": "该电话号码用户已注册"
+#             }
+#             return jsonify(ret_dic)
+#
+#         # tel str字符 判断长度，是否11位来确定有没有必要往下进行
+#         if len(tel) == 11:
+#             # 用isdigit()函数来判断是否为数字，是数字返回True 否则返回false
+#             result = request.form['tel'].isdigit()
+#             if result == True:
+#                 # 是数字
+#                 mem_info = Member.add_member_by_tel(tel)
+#                 ret_dic = {
+#                     "return_code": 200, "return_msg": "add member success",
+#                     "member": mem_info
+#                 }
+#                 return jsonify(ret_dic)
+#             else:
+#                 # 不是数字
+#                 ret_dic = {
+#                     "return_code": 508, "return_msg": "add member failed, exists",
+#                 }
+#                 return jsonify(ret_dic)
+#         else:
+#             # 不是11位
+#             ret_dic = {
+#                 "return_code": 508, "return_msg": "add member failed, exists",
+#             }
+#             return jsonify(ret_dic)
+#
+
+
+
+
+
 
 
 #
@@ -29,7 +73,15 @@ def init_db():
 @app.route('/member', methods=['POST'])
 def member_actions():
     tel = request.form['tel']
-    if len(tel) == 11:  # 判断tel长度是否等于11
+    member_tel = Member.query.filter(Member.tel == tel).first()
+    if member_tel !=None:# (如果输入的手机号在数据库中）
+        ret_dic = {
+            "return_code": 508,
+            "return_msg": "add member failed, exists",
+        }
+        return jsonify(ret_dic)
+
+    if len(tel) == 11 : # 判断tel长度是否等于11
         result = request.form['tel'].isdigit()  # result是tel转换成数字，判断是否为真
         if result == True:  # 如果为真, 即长度为11位，类型为整数
             tel = request.form['tel']
