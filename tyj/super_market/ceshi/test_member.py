@@ -24,6 +24,7 @@ class Member(db.Model):
         return ret_dic
 
 
+
     # 根据手机号查找会员列表  ---liu
     @classmethod
     def search_by_tel(cls, tel):
