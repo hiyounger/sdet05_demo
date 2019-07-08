@@ -1,6 +1,6 @@
 import unittest
 
-from YZX.homework0628.shop.members import Members
+from Yzx.Person.homework0628.shop.members import Members
 
 class TestModifyMemberByTel(unittest.TestCase):
     def test_modify_mermber_by_tel_case01(self):
