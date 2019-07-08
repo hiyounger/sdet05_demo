@@ -1,6 +1,6 @@
 import unittest
 
-from YZX.homework0628.shop.members import Members
+from Yzx.Person.homework0628.shop.members import Members
 
 class TestDelMemberByTell(unittest.TestCase):
     def test_del_member_by_tell_case01(self):
