@@ -1,10 +1,10 @@
 # encoding:utf-8
 from flask import Flask, request,jsonify
-from liu.supermarket.model.members import Member
+from liu.supermarket.model.membersbak import Member
 
 app = Flask('__main__')
 
-@app.route('/hello')
+@app.route('/')
 def say_hello():
     return 'hello Flask'
 

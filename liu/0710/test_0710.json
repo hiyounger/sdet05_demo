@@ -1,0 +1,18 @@
+{
+  "test0710_get_case01":
+  {"uid": 1},
+  "test0710_get_case02":
+  {"uid": 2},
+  "test0710_get_case03":
+  {"uid": 3},
+  "test0710_get_case04":
+  {"uid": 4},
+  "test0710_post_case01":
+  {"username": "xiaoxiao","password": "123456"},
+  "test0710_post_case02":
+  {"username": "xiaoming","password": "123456"},
+  "test0710_post_case03":
+  {"username": "xiaochen","password": "123456"},
+  "test0710_post_case04":
+  {"username": "xiaoton","password": "123456"}
+}
