@@ -23,58 +23,39 @@ class Member(db.Model):
         ret_dic = cls.search_by_tel(tel)['members'][0]
         return ret_dic
 
-
-
     # 根据手机号查找会员列表  ---liu
     @classmethod
     def search_by_tel(cls, tel):
         member_list = []
-        type = tel.isdigit()
-        member = Member.query.filter(Member.tel.endswith(tel)).first()
-        if len(tel) == 11 and type == True and member != None:
+        if len(tel) == 11:
+            member = Member.query.filter(Member.tel.endswith(tel)).first()
             member_info = {'uid': member.uid, 'tel': member.tel, 'discount': member.discount, 'score': member.score,
                            'active': member.active}
             member_list.append(member_info)
-            ret_dic = {
-                'count': len(member_list),
-                'members': member_list
-            }
-            return ret_dic
-        elif len(tel) == 4 and type == True and member != None:
+        else:
             db_query = Member.query.filter(Member.tel.endswith(tel))
             for member in db_query:
                 member_info = {'uid': member.uid, 'tel': member.tel, 'discount': member.discount, 'score': member.score,
                                'active': member.active}
                 member_list.append(member_info)
-                ret_dic = {
-                    'count': len(member_list),
-                    'members': member_list
-                }
-            return ret_dic
-        else:
-            ret_dic={
-                'return_code':400,
-                'return_msg':'Get Member by tel failed'
-            }
-            return ret_dic
-
+        ret_dic = {
+            'new_member': member_info,
+            'count': len(member_list),
+            'members': member_list
+        }
+        return ret_dic
 
     # 根据实付金额更改用户积分杨俊
     @classmethod
     def update_member_score(cls, uid, score):
         member = Member.query.filter(Member.uid == uid).first()
-        if member==None:
-            ret_dic = {}
-            return ret_dic
-
         score_before = member.score
         member.score = score_before + score
         db.session.commit()
 
         ret_dic = {"uid": member.uid, 'tel': member.tel, 'score_before': score_before, 'score_after': member.score,
-                       'score_change': score}
+                   'score_change': score}
         return ret_dic
-
 
     # 通过uid查询会员信息(zhangjun)
     @classmethod
@@ -87,7 +68,7 @@ class Member(db.Model):
                     'tel': member.tel,
                     'discount': member.discount,
                     'score': member.score,
-                    'active':member.active,
+                    'active': member.active,
                 }
                 return ret_dic
         return {}
@@ -106,7 +87,6 @@ class Member(db.Model):
         except:
             member_list = ['请输入正确的数值']
             ret_dic = {
-                'return_code':500,
                 'members': member_list
             }
             return ret_dic
@@ -123,16 +103,13 @@ class Member(db.Model):
                 "count": 0,
                 "members": member_list
             }
-            ret_dic['return_code'] = 200
         else:
             ret_dic = {
                 "count": len(member_list),
                 "members": member_list
             }
-            ret_dic['return_code'] = 200
         return ret_dic
         # 方法二：从数据库中查找到积分大于给定积分的用户，遍历增添进member_list中
-        #
         # members = Member.query.filter(Member.score >=int(sc))
         # for mem in members:
         #     member_list.append(mem)
@@ -142,53 +119,18 @@ class Member(db.Model):
         # }
         # return ret_dic
 
-
-    #根据uid，修改用户信息   陈耀
     @classmethod
-    def update_member_by_uid(cls, uid, member, new_tel, new_discount, new_score, new_active):
-        if uid == "" or new_tel == "" or new_discount == "" or new_score == "" or new_active == "":
-            ret_dic = {"return_code": "400",
-                       "return_msg": "修改的值不能为空"}
-            return ret_dic
-        elif new_active != "0" and new_active != "1":
-            ret_dic = {"return_code": "400",
-                       "return_msg": "激活状态只能为0或1"}
-            return ret_dic
-        elif float(new_discount) < 0 and float(new_discount) > 1:
-            ret_dic = {"renturn_code": "400",
-                       "return_msg": "会员折扣应该在0~1之间"
-                       }
-            return ret_dic
-        elif int(new_score) < 0:
-            ret_dic = {"return_code": "400",
-                       "return_msg": "积分不能为负数"}
-            return ret_dic
-        elif len(new_tel) != 11:
-            ret_dic = {"return_code": "400",
-                       "return_msg": "电话号码应该为11位数字"}
-            return ret_dic
-
-        try:
-            new_tel = int(new_tel)
-        except:
-            ret_dic = {"return_code": "400",
-                       "return_msg": "电话号码应该为数字"}
-            return ret_dic
-
-        member.tel = str(new_tel)
-        member.active = int(new_active)
-        member.discount = float(new_discount)
-        member.score = int(new_score)
-        try:
-            db.session.commit()
-        except:
-            ret_dic = {"return_code": "400",
-                       "return_msg": "手机号是唯一的，您输入的手机号数据库的列表中已存在"}
-            return ret_dic
-        ret_dic = {"uid": member.uid, 'tel': member.tel, 'discount': member.discount,
-                   'score': member.score, 'active': member.active}
+    # 根据uid，修改tel,discount,score,active
+    def update_msg_by_uid(cls, uid, tel, discount, score, active):
+        member_list = []
+        member = Member.query.filter(Member.uid == uid).first()
+        member_info = {"uid": member.uid, "tel": member.tel, "discount": member.discount,
+                       "score": member.score, "active": member.active}
+        member_list.append(member_info)
+        ret_dic = {
+            "members": member_list
+        }
         return ret_dic
-
 
     # 根据uid注销
     @classmethod
@@ -206,17 +148,3 @@ class Member(db.Model):
                 }
                 return ret_dic
         return {}
-
-    #查询所有用户：
-    @classmethod
-    def get_all_members(cls):
-        member_list=[]
-        member=Member.query.all()
-        for mem in member:
-            member_info = {"uid": mem.uid, 'tel': mem.tel, 'discount': mem.discount, 'score': mem.score,
-                               'active': mem.active}
-            member_list.append(member_info)
-        ret_dic={
-            'members':member_list
-        }
-        return ret_dic
