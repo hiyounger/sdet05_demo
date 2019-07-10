@@ -1,0 +1,29 @@
+{
+  ",test_filterData001":{
+      "le": "0"
+  },
+  ",test_filterData002":{
+      "le": "1"
+  },
+  ",test_filterData003":{
+      "le": "10"
+  },
+  ",test_filterData004":{
+      "le": "10000"
+  },
+  ",test_filterData005":{
+      "le": "1000a"
+  },
+  ",test_filterData006":{
+      "le": "a"
+  },
+  ",test_filterData007":{
+      "le": "100%"
+  },
+  ",test_filterData008":{
+      "le": "-100"
+  },
+  ",test_filterData009":{
+      "le": "100.7"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "test_addmember001":{
+      "input_data":{
+        "username": "yanzhenxing001",
+       "password": 12334}
+  },
+  "test_addmember002":{
+      "input_data":{
+        "username": "yanzhenxing002",
+       "password": 12334423}
+  },
+  "test_addmember003":{
+      "input_data":{
+        "username": "yanzhenxing003",
+       "password": 123341231}
+  },
+  "test_addmember004":{
+       "input_data":{
+        "username": "yanzhenxing004",
+       "password": 123312314}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "case01":{
+      "input_data":{
+          "username": "0928753075092",
+          "password": "12345"
+      },
+        "exp_data": {
+            "error_code": 401,
+            "error_msg": "用户已存在"
+        }
+  },
+  "case02":{
+      "input_data":{
+          "username": "0928753075091",
+          "password": "12341"
+      },
+        "exp_data": {
+            "username": "0928753075091",
+            "password": "12341"
+        }
+  }
+
+}
