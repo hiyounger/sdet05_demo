@@ -1,0 +1,17 @@
+{
+  "testaddusersuccess": {
+  "username": "fsjfs",
+  "password": "4324"
+  },
+  "testadduserfailed": {
+  "username": "xiaoming",
+  "password": "4324"
+  },
+  "testgetSuccess": {
+    "uid": 1
+  },
+  "testgetFailed": {
+  "uid": 7
+  }
+}
+

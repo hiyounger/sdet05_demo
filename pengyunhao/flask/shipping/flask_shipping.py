@@ -1,49 +1,55 @@
 #encoding:utf-8
 
-from flask import Flask,request
+from flask import Flask,jsonify,request
+from flask_sqlalchemy import SQLAlchemy
+from model.members import db,Member
 
-from pengyunhao.flask.shipping.model.members import Member
+#实例化一个Flask对象
+app=Flask(__name__)
 
-app=Flask("__main__")
+
+#实例化一个flask_sqlalchemy对象，用于操作数据库
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] ="mysql+pymysql://root:root@127.0.0.1:3306/pyh"
+db.init_app(app)
 
 @app.route("/")
-def QQ():
-    return "QQ"
+def index():
+    return "hello flask"
 
-@app.route("/music")
-@app.route("/music/<name>")
-def QQmusic(name="sss"):
-    return "QQmusic %s"%name
+@app.route("/initdb",methods=["POST"])
+def initdb():
+    db.create_all()
+    return "success initdb"
 
-@app.route("/member")
-@app.route("/member/tel")
-def getAllMember(tel=None):
-    if tel==None:
-        memberList=str(Member.getAllMember())
-    else:
-        memberList=str(Member.getMemberByTel(tel))
-    return memberList
-
-@app.route("/member",methods=["GET","POST"])
-@app.route("/member/<condition>")
-def UpdateMember(condition=None):
-    if request.method == "GET":
-        if condition==None:
-            memberList=str(Member.getAllMember())
-        else:
-            if condition.startswith("tel_"):
-                tel=condition.split("_")[-1]
-                memberList=str(Member.getMemberByTel(tel))
-            else:
-                uid=condition.split("_")[-1]
-                memberList=str(Member.getMemberByUid(uid))
-        return memberList
-    else:
+@app.route("/member",methods=["POST","GET"])
+@app.route("/member/<condition>",methods=["GET","PATCH"])
+def memberMethons(condition=None):
+    if condition==None and request.method=="GET":
+        returnDict=Member.queryAll()
+        return jsonify(returnDict)
+    elif request.method=="POST":
         tel=request.form["tel"]
-        print "----------------------"
-        newMember=Member.AddMember(tel)
-        return str(newMember)
-
-
+        newMenber=Member.addMember(tel)
+        returnDict={
+            "return_code": 200,
+            "return_msg": "add member success",
+            "member": newMenber
+        }
+        return jsonify(returnDict)
+    elif request.method=="GET":
+        if condition.startswith("tel_"):
+            tel=condition.split("_")[-1]
+            returnDict=Member.queryBytel(tel)
+            returnDict["return_code"]=200
+            returnDict['return_msg'] = "Get Member by tel success"
+            return jsonify(returnDict)
+    elif request.method=="PATCH":
+        uid=int(condition.split("_"-1))
+        score=int(request.form["score"])
+        returnDict=Member.updateScore(uid,score)
+        returnDict['return_code'] = 200
+        returnDict["return_msg"] = "update score success"
+        return jsonify(returnDict)
 if __name__=="__main__":
-    app.run()
+    app.run(host="0.0.0.0",port=80,debug=True)
