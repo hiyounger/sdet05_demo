@@ -1,6 +1,6 @@
 import unittest
 
-from YZX.homework0628.shop.members import Members
+from Yzx.Person.homework0628.shop.members import Members
 
 class TestAccumulatedShoppingPoints(unittest.TestCase):
     def test_accumulated_shopping_points_case01(self):

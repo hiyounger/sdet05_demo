@@ -1,0 +1,14 @@
+{
+  "case01":{
+      "input_data":{
+          "uid":"1"
+      },
+        "exp_data": {
+            "password": "234",
+            "uid": 1,
+            "username": "dsada"
+        }
+  }
+
+
+}

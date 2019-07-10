@@ -29,7 +29,7 @@ class get_members():
     def get_member_by_uid(cls, uid):
         get_all_member = []
         for member in mysql.members:
-            if member['id'] == uid:
+            if member['uid'] == uid:
                 get_all_member.append(member)
                 break
         get_member = {
@@ -41,7 +41,7 @@ class get_members():
     @classmethod
     def add_member(cls, tel, score, active):
         new_member = {'tel': tel, 'disc': 1, 'score': score, 'active': active}
-        new_member['id'] = str(len(mysql.members) + 1)
+        new_member['uid'] = str(len(mysql.members) + 1)
         mysql.members.append(new_member)
         return new_member
 
