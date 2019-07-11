@@ -153,7 +153,6 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(act_result, exp_result)
 
-        self.driver.find_element_by_css_selector()
 
 
 if __name__ == '__main__':
