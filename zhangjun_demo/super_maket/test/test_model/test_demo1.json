@@ -1,0 +1,10 @@
+{
+     "test_register_case001":{
+      "username": "zhangjun",
+       "password": "123456"
+    },
+    "test_register_case002":{
+       "username": "zhangsan",
+       "password": "123456"
+    }
+}
