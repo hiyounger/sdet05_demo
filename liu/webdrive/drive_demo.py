@@ -193,3 +193,5 @@ alter2 = driver.switch_to.alert
 print ("Alter text:%s"%alter2.text)
 time.sleep(1.5)
 alter2.accept()
+
+
