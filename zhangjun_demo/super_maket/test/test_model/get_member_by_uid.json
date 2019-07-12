@@ -1,0 +1,33 @@
+
+{
+   "get_member_by_uid_case001": {
+       "uid": "1"
+        },
+"get_member_by_uid_case002": {
+     "uid": "a"
+     },
+"get_member_by_uid_case003": {
+"uid": "**"
+},
+  "get_member_by_uid_case004": {
+     "uid": "2"
+     },
+  "get_member_by_uid_case005": {
+     "uid": "10000"
+     },
+  "get_member_by_uid_case006": {
+     "uid": "2a"
+     },
+  "get_member_by_uid_case007": {
+     "uid": "null"
+     },
+  "get_member_by_uid_case008": {
+     "uid": ""
+     },
+  "get_member_by_uid_case009": {
+     "uid": "[2]"
+     },
+  "get_member_by_uid_case004": {
+     "uid": "{'1':'2'}"
+     }
+}

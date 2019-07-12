@@ -1,0 +1,9 @@
+{
+     "get_member_by_uid_case001":{
+       "uid": "1"
+    },
+    "get_member_by_uid_case002":{
+       "uid": "66666"
+    }
+}
+
