@@ -11,8 +11,12 @@ class MyTestCase(unittest.TestCase):
         cls.driver=webdriver.Firefox()
 
     def setUp(self):
-        url='http://47.92.220.226/webdriver/location.html'
+        url='http://47.92.220.226:8000/webdriver/location.html'
         self.driver.get(url)
+
+    @classmethod
+    def testpage_quit(cls):
+        cls.driver.quit()
 
     # 注册成功
     def test_regiser(self):
