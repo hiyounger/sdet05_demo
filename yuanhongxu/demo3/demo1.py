@@ -8,7 +8,7 @@ from selenium.webdriver import ActionChains
 
 drive = webdriver.Firefox()
 
-url = "http://47.92.220.226/webdriver/"
+url = "http://47.92.220.226:8000/webdriver/"
 drive.get(url)
 
 # tag_a=drive.find_elements_by_tag_name(u"a")
@@ -120,39 +120,36 @@ print june_sum
 
 drive.back()
 
-ele_optTest=drive.find_element_by_link_text(u"页面元素操作练习")
+ele_optTest = drive.find_element_by_link_text(u"页面元素操作练习")
 ele_optTest.click()
 
-ele_opt_text=drive.find_element_by_id("1_1")
+ele_opt_text = drive.find_element_by_id("1_1")
 ele_opt_text.send_keys(u"123a")
-ele_opt_text1=drive.find_element_by_xpath("/html/body/div[1]/div[1]/input[2]")
+ele_opt_text1 = drive.find_element_by_xpath("/html/body/div[1]/div[1]/input[2]")
 ele_opt_text1.click()
 
-ele_opt_pwd=drive.find_element_by_id("1_2")
+ele_opt_pwd = drive.find_element_by_id("1_2")
 ele_opt_pwd.send_keys(u"123a")
-ele_opt_pwd1=drive.find_element_by_xpath("/html/body/div[1]/div[2]/input[2]")
+ele_opt_pwd1 = drive.find_element_by_xpath("/html/body/div[1]/div[2]/input[2]")
 ele_opt_pwd1.click()
 
-ele_opt_email=drive.find_element_by_id("1_3")
+ele_opt_email = drive.find_element_by_id("1_3")
 ele_opt_email.send_keys(u"123@qq.com")
-ele_opt_email1=drive.find_element_by_xpath("/html/body/div[1]/div[3]/input[2]")
+ele_opt_email1 = drive.find_element_by_xpath("/html/body/div[1]/div[3]/input[2]")
 ele_opt_email1.click()
 
-ele_fruit=Select(drive.find_element_by_id(u"fruit"))
-# print ele_fruit.first_selected_option.text
-#
-# all_fruit=ele_fruit.options
-# print len(all_fruit)
-# print all_fruit[2].text
-# for fruit in all_fruit:
-#     print fruit.text
+ele_fruit = Select(drive.find_element_by_id(u"fruit"))
+print ele_fruit.first_selected_option.text
+
+all_fruit = ele_fruit.options
+print len(all_fruit)
+print all_fruit[2].text
+for fruit in all_fruit:
+    print fruit.text
 
 ele_fruit.select_by_index(1)
-
 ele_fruit.select_by_value(u"mihoutao")
-
 ele_fruit.select_by_visible_text(u"荔枝")
-
 
 # ele_radiobts=drive.find_elements_by_name(u"fruit")
 # for radiobt in ele_radiobts:
@@ -169,41 +166,39 @@ ele_fruit.select_by_visible_text(u"荔枝")
 #     print radiobt2.get_attribute("value")
 
 
-ele_div1=drive.find_element_by_id(u"div1")
-ele_div2=drive.find_element_by_id(u"div2")
+ele_div1 = drive.find_element_by_id(u"div1")
+ele_div2 = drive.find_element_by_id(u"div2")
 print ele_div1.is_displayed()
 print ele_div2.is_displayed()
-ele_button=drive.find_element_by_id(u"button1")
+ele_button = drive.find_element_by_id(u"button1")
 ele_button.click()
 print ele_div1.is_displayed()
 print ele_div2.is_displayed()
 
 print "================================"
 
-ele_enable_input=drive.find_element_by_xpath("/html/body/div[3]/div[1]/input")
+ele_enable_input = drive.find_element_by_xpath("/html/body/div[3]/div[1]/input")
 print ele_enable_input.is_enabled()
 
-ele_disenable_input=drive.find_element_by_xpath("/html/body/div[3]/div[2]/input")
+ele_disenable_input = drive.find_element_by_xpath("/html/body/div[3]/div[2]/input")
 print ele_disenable_input.is_enabled()
 
-
-ele_doubleClickBt=drive.find_element_by_id("context_click")
-action_chains=ActionChains(drive)
+ele_doubleClickBt = drive.find_element_by_id("context_click")
+action_chains = ActionChains(drive)
 action_chains.double_click(ele_doubleClickBt).perform()
 print ele_doubleClickBt.get_attribute("style")
 
-# ele_alterbt=drive.find_element_by_xpath("/html/body/div[5]/div/input[1]")
-# ele_alterbt.click()
-# alert=drive.switch_to.alert
-# print alert.text
-# time.sleep(2)
-# alert.accept()
-
-ele_alterbt2=drive.find_element_by_xpath("/html/body/div[5]/div/input[2]")
-ele_alterbt2.click()
+ele_alterbt=drive.find_element_by_xpath("/html/body/div[5]/div/input[1]")
+ele_alterbt.click()
 alert=drive.switch_to.alert
 print alert.text
 time.sleep(2)
 alert.accept()
-alert.dismiss()
 
+# ele_alterbt2 = drive.find_element_by_xpath("/html/body/div[5]/div/input[2]")
+# ele_alterbt2.click()
+# alert = drive.switch_to.alert
+# print alert.text
+# time.sleep(2)
+# alert.accept()
+# alert.dismiss()
