@@ -1,5 +1,5 @@
 import unittest
-from liu.supermarket.model.members import Member
+from liu.supermarket.model.membersbak import Member
 
 class test_case_001(unittest.TestCase):
     def test_case_001_testGetAllMembers(self):
