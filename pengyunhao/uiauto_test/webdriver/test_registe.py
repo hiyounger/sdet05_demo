@@ -2,13 +2,12 @@
 import unittest
 from selenium import webdriver
 import json
-
 class MyTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver=webdriver.Firefox()
     def setUp(self):
-        url="http://47.92.220.226/webdriver/location.html"
+        url="http://47.92.220.226:8000/webdriver/location.html"
         self.driver.get(url)
 
     #注册成功
@@ -71,6 +70,7 @@ class MyTestCase(unittest.TestCase):
     #     self.assertEqual(exp_result,asc_result)
     # case03.通过ID查询一个已存在的用户、
     def test_queryByID(self):
+        Registg.registgData()
         ele_byid=self.driver.find_element_by_id(u"search_uid")
         ele_btByID = self.driver.find_element_by_xpath(u"//div[2]/div[1]/input[2]")
         ele_byidmsg = self.driver.find_element_by_id(u"search_msg")
