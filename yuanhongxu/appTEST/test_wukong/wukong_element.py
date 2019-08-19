@@ -132,3 +132,10 @@ class WuKong():
     def ele_sjnr(self):
         ele = self.driver.find_element_by_xpath('(//android.view.View[@content-desc="学习"])[2]')
         return ele
+
+    #商机列表里的商机金额
+    @property
+    def ele_sj_sjje(self):
+        ele = self.driver.find_element_by_xpath('(//android.view.View[@content-desc="145.00"])[1]')
+        return ele
+
