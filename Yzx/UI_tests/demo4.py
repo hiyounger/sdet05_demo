@@ -1,6 +1,5 @@
 #encoding:utf-8
 from selenium import webdriver
-import json
 import time
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver import ActionChains
