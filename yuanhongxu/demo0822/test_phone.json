@@ -1,0 +1,326 @@
+{
+  "case01":{
+      "input_data":{
+          "phone": "15623219487",
+          "key": "802831374e480e92f88f1bd989a805b0"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "湖北",
+              "city": "武汉",
+              "areacode": "027",
+              "zip": "430000",
+              "company": "联通",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case02":{
+      "input_data":{
+          "phone": "15623219550",
+          "key": "802831374e480e92f88f1bd989a805b0"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "湖北",
+              "city": "武汉",
+              "areacode": "027",
+              "zip": "430000",
+              "company": "联通",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case03":{
+      "input_data":{
+          "phone": "15623219550",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": "json"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "湖北",
+              "city": "武汉",
+              "areacode": "027",
+              "zip": "430000",
+              "company": "联通",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+   "case04":{
+      "input_data":{
+          "phone": "15623219",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": "json"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "湖北",
+              "city": "武汉",
+              "areacode": "027",
+              "zip": "430000",
+              "company": "联通",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case05":{
+      "input_data":{
+          "phone": "1562321",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": "json"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "湖北",
+              "city": "武汉",
+              "areacode": "027",
+              "zip": "430000",
+              "company": "联通",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case06":{
+      "input_data":{
+          "phone": "156232195502",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": "json"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "湖北",
+              "city": "武汉",
+              "areacode": "027",
+              "zip": "430000",
+              "company": "联通",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case07":{
+      "input_data":{
+          "phone": "13952484356",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": "json"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+               "province": "江苏",
+                "city": "无锡",
+                "areacode": "0510",
+                "zip": "214000",
+                "company": "移动",
+                "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case08":{
+      "input_data":{
+          "phone": "18855091234",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": "json"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "安徽",
+              "city": "滁州",
+              "areacode": "0550",
+              "zip": "239000",
+              "company": "移动",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case09":{
+      "input_data":{
+          "phone": "15745091234",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": "json"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "上海",
+              "city": "上海",
+              "areacode": "021",
+              "zip": "200000",
+              "company": "移动",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case10":{
+      "input_data":{
+          "phone": "18845091234",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": "json"
+      },
+      "exp_data": {
+          "resultcode": "200",
+          "reason": "Return Successd!",
+          "result": {
+              "province": "黑龙江",
+              "city": "哈尔滨",
+              "areacode": "0451",
+              "zip": "150000",
+              "company": "移动",
+              "card": ""
+          },
+          "error_code": 0
+      }
+  },
+  "case11":{
+      "input_data":{
+          "phone": "15623219550"
+      },
+      "exp_data":{
+          "resultcode": "101",
+          "reason": "错误的请求KEY",
+          "result": null,
+          "error_code": 10001
+      }
+  },
+  "case12":{
+      "input_data":{
+          "phone": "15623219550",
+          "key": "802831374e480e92f88f1bd989a805b01"
+      },
+      "exp_data":{
+          "resultcode": "101",
+          "reason": "错误的请求KEY",
+          "result": null,
+          "error_code": 10001
+      }
+  },
+  "case13":{
+      "input_data":{
+          "key": "802831374e480e92f88f1bd989a805b0"
+      },
+      "exp_data":{
+          "resultcode": "201",
+          "reason": "The phone number can not be empty!",
+          "result": null,
+          "error_code": 201101
+      }
+  },
+  "case14":{
+      "input_data":{
+          "phone": "156232",
+          "key": "802831374e480e92f88f1bd989a805b0"
+      },
+      "exp_data":{
+          "resultcode": "202",
+          "reason": "Wrong phone number!",
+          "result": null,
+          "error_code": 201102
+      }
+  },
+  "case15":{
+      "input_data":{
+          "phone": "156252a9550",
+          "key": "802831374e480e92f88f1bd989a805b0"
+      },
+      "exp_data":{
+          "resultcode": "202",
+          "reason": "Wrong phone number!",
+          "result": null,
+          "error_code": 201102
+      }
+  },
+  "case16":{
+      "input_data":{
+          "phone": "156252!9550",
+          "key": "802831374e480e92f88f1bd989a805b0"
+      },
+      "exp_data":{
+          "resultcode": "202",
+          "reason": "Wrong phone number!",
+          "result": null,
+          "error_code": 201102
+      }
+  },
+  "case17":{
+      "input_data":{
+          "phone": "",
+          "key": "802831374e480e92f88f1bd989a805b0"
+      },
+      "exp_data":{
+        "resultcode": "201",
+        "reason": "The phone number can not be empty!",
+        "result": null,
+        "error_code": 201101
+      }
+  },
+  "case18":{
+      "input_data":{
+          "phone": "15623219550",
+          "key": "802831374e480e92f88f1bd989a805b0",
+          "dtype": ""
+      },
+      "exp_data":{
+            "resultcode": "200",
+            "reason": "Return Successd!",
+            "result": {
+                "province": "湖北",
+                "city": "武汉",
+                "areacode": "027",
+                "zip": "430000",
+                "company": "联通",
+                "card": ""
+            },
+            "error_code": 0
+      }
+  },
+  "case19":{
+      "input_data":{
+          "phone": "15623219550",
+          "key": ""
+      },
+      "exp_data":{
+          "resultcode": "101",
+          "reason": "错误的请求KEY",
+          "result": null,
+          "error_code": 10001
+      }
+  },
+   "case20":{
+      "input_data":{
+          "phone": "1562 219550",
+          "key": "802831374e480e92f88f1bd989a805b0"
+      },
+      "exp_data":{
+          "resultcode": "202",
+          "reason": "Wrong phone number!",
+          "result": null,
+          "error_code": 201102
+      }
+  }
+}
