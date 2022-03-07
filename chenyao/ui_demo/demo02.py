@@ -4,7 +4,8 @@ from selenium import webdriver
 driver = webdriver.Firefox()
 driver.get('http://47.92.220.226/webdriver/findelements.html')
 
-print 'hello demo'
+print 'hello'
+
 
 # username_input = driver.find_element_by_id('username')
 # username_input.send_keys('chenyao')
